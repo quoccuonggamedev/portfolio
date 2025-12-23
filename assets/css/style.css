@@ -132,7 +132,7 @@ p{margin:10px 0 0; line-height:1.7}
 }
 .avatar{
     width:100%;
-    height:260px;
+    height:340px;
     object-fit:cover;
     display:block;
     background: rgba(255,255,255,.02);
