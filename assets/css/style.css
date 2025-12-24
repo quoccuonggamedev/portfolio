@@ -46,7 +46,7 @@ p{margin:10px 0 0; line-height:1.7}
 }
 .skip:focus{left:12px; z-index:50}
 
-/* Topbar */
+/* Topbar (kept for compatibility) */
 .topbar{
     position:sticky; top:0; z-index:40;
     backdrop-filter: blur(14px);
@@ -111,16 +111,81 @@ p{margin:10px 0 0; line-height:1.7}
     box-shadow:none;
 }
 
-/* Hero */
+/* Hero (UPDATED: single horizontal / one column) */
 .hero{padding:56px 0 30px}
-.hero__grid{
-    display:grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap:22px;
-    align-items:start;
+
+.hero__single{
+    border-radius: var(--radius2);
 }
-.kicker{color:var(--muted); font-weight:700; font-size:13px; margin-bottom:12px}
-.lead{color:rgba(231,234,240,.92)}
+
+.hero__top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.hero__name{
+    font-size: 26px;
+    letter-spacing: -0.01em;
+}
+
+.hero__meta{
+    display:grid;
+    gap:8px;
+    min-width: 320px;
+}
+
+.hero__metaRow{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+}
+
+.hero__headlineWrap{
+    margin-top: 18px;
+}
+
+.hero__headline{
+    margin: 0;
+}
+
+.hero__lead{
+    margin-top: 12px;
+    max-width: 980px;
+}
+
+.hero__bottom{
+    margin-top: 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    flex-wrap:wrap;
+    padding-top: 14px;
+    border-top: 1px solid var(--line2);
+}
+
+.hero__links{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    font-weight: 900;
+    color: rgba(231,234,240,.92);
+}
+
+.hero__links a{
+    padding:8px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--line2);
+    background: rgba(255,255,255,.02);
+}
+
+.hero__location{
+    font-weight: 700;
+    font-size: 13px;
+}
 
 /* Profile card */
 .card{
@@ -144,6 +209,7 @@ p{margin:10px 0 0; line-height:1.7}
 .list__row{display:flex; justify-content:space-between; gap:12px}
 .label{color:var(--muted); font-weight:800; font-size:12px}
 .value{font-weight:700; font-size:12px; color:rgba(231,234,240,.92)}
+.lead{color:rgba(231,234,240,.92)}
 
 /* Sections */
 .section{padding:52px 0}
@@ -169,7 +235,7 @@ p{margin:10px 0 0; line-height:1.7}
 }
 .pmedia{
     position:relative;
-    height:170px; /* a bit taller to show thumbnails nicely */
+    height:170px;
     background:
             radial-gradient(400px 160px at 20% 30%, rgba(124,92,255,.25), transparent 60%),
             radial-gradient(420px 160px at 90% 10%, rgba(61,214,208,.18), transparent 55%),
@@ -210,7 +276,7 @@ p{margin:10px 0 0; line-height:1.7}
 }
 .link:hover{border-bottom-color:rgba(231,234,240,.5)}
 
-/* ✅ YouTube thumbnail */
+/* YouTube thumbnail */
 .pmedia--video .pthumb{
     position:absolute;
     inset:0;
@@ -231,7 +297,6 @@ p{margin:10px 0 0; line-height:1.7}
     opacity:1;
     filter: saturate(1.1) contrast(1.08);
 }
-/* subtle overlay for readability */
 .pmedia--video .pthumb::after{
     content:"";
     position:absolute;
@@ -269,86 +334,6 @@ p{margin:10px 0 0; line-height:1.7}
     border-bottom:12px solid transparent;
 }
 
-/* ✅ Icon fallback */
-.picon{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:1;
-}
-.picon::before{
-    content:"";
-    width:120px;
-    height:120px;
-    border-radius:999px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.08);
-}
-.picon svg{
-    width:74px;
-    height:74px;
-    color: rgba(231,234,240,.82);
-    filter: drop-shadow(0 10px 25px rgba(0,0,0,.35));
-    position:relative;
-    z-index:2;
-}
-
-/* optional per-type tint */
-.pmedia--playable .picon svg{ color: rgba(61,214,208,.85); }
-.pmedia--framework .picon svg{ color: rgba(124,92,255,.90); }
-.pmedia--ar .picon svg{ color: rgba(231,234,240,.88); }
-.pmedia--aaa .picon svg{ color: rgba(231,234,240,.75); }
-
-/* Expertise */
-.xgrid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:16px;
-}
-.xcard{
-    padding:16px;
-    border-radius: var(--radius2);
-    border:1px solid var(--line2);
-    background: rgba(255,255,255,.03);
-}
-.skillstrip{
-    margin-top:16px;
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-}
-.skillstrip span{
-    padding:7px 9px;
-    border-radius:12px;
-    border:1px solid var(--line2);
-    background: rgba(255,255,255,.02);
-    color:var(--muted);
-    font-weight:800;
-    font-size:12px;
-}
-
-/* Timeline */
-.timeline{display:grid; gap:14px}
-.titem{
-    display:grid;
-    grid-template-columns: 170px 1fr;
-    gap:16px;
-    padding:14px 16px;
-    border-radius: var(--radius2);
-    border:1px solid var(--line2);
-    background: rgba(255,255,255,.03);
-}
-.tleft{color:var(--muted); font-weight:900; font-size:13px}
-.note{
-    margin-top:14px;
-    padding:14px 16px;
-    border-radius: var(--radius2);
-    border:1px solid var(--line2);
-    background: rgba(124,92,255,.08);
-}
-
 /* Contact */
 .contact{
     display:flex;
@@ -375,6 +360,26 @@ p{margin:10px 0 0; line-height:1.7}
 .contact__card a{color:rgba(231,234,240,.92); font-weight:900}
 .contact__card .label{display:block; margin-bottom:6px}
 
+/* Timeline */
+.timeline{display:grid; gap:14px}
+.titem{
+    display:grid;
+    grid-template-columns: 170px 1fr;
+    gap:16px;
+    padding:14px 16px;
+    border-radius: var(--radius2);
+    border:1px solid var(--line2);
+    background: rgba(255,255,255,.03);
+}
+.tleft{color:var(--muted); font-weight:900; font-size:13px}
+.note{
+    margin-top:14px;
+    padding:14px 16px;
+    border-radius: var(--radius2);
+    border:1px solid var(--line2);
+    background: rgba(124,92,255,.08);
+}
+
 /* Footer */
 .footer{
     padding:18px 0;
@@ -385,12 +390,14 @@ p{margin:10px 0 0; line-height:1.7}
 
 /* Responsive */
 @media (max-width: 980px){
-    .hero__grid{grid-template-columns: 1fr}
     .grid{grid-template-columns: 1fr}
-    .xgrid{grid-template-columns: 1fr}
     .contact{flex-direction:column}
     .contact__card{width:100%}
     .titem{grid-template-columns: 1fr}
+
+    .hero__meta{
+        min-width: 100%;
+    }
 }
 @media (max-width: 760px){
     .nav{display:none}
